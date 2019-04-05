@@ -4,13 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var border_parser =require("body-parser");
+var history =  require('connect-history-api-fallback')
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // var loginRouter = require('./routes/users');
 
 var app = express();
-
+app.use('/',history())
 app.use(express.static(path.join(__dirname,"public/dist")));
 // 设置跨域请求
 app.all("*", function (req, res, next) {
